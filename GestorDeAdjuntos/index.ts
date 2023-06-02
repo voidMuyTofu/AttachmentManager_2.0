@@ -31,21 +31,25 @@ export class GestorDeAdjuntos
   private async onAttach(selectedFiles: IFileItem[]) {
     let apiUrl: string;
     for (let i = 0; i < selectedFiles.length; i++) {
-      const fileUrl = selectedFiles[i].fileUrl;
-      console.log(fileUrl);
+      if (selectedFiles[i].fileUrl != null) {
+        const fileUrl = selectedFiles[i].fileUrl;
+        console.log(fileUrl);
 
-      apiUrl = this.spHelper.makeApiUrl(fileUrl);
+        apiUrl = this.spHelper.makeApiUrl(fileUrl);
 
-      const data = await http(apiUrl);
-
-      ActivityMimeAttachment.create(
-        data["Content"],
-        this.primaryEntity.Entity,
-        fileUrl.substr(fileUrl.lastIndexOf("/")),
-        this.context
-      );
+        const data = await http(apiUrl);
+        ActivityMimeAttachment.create(
+          data["Content"],
+          this.primaryEntity.Entity,
+          fileUrl.substr(fileUrl.lastIndexOf("/")),
+          this.context
+        );
+      }
     }
+    this.refreshAfterClose();
+  }
 
+  private refreshAfterClose() {
     this.regardingId = new Date().toTimeString();
     this.notifyOutputChanged();
   }
@@ -56,6 +60,8 @@ export class GestorDeAdjuntos
     props.files = [];
     props.onAttach = this.onAttach.bind(this);
     props.context = this.context;
+    props.primaryEntity = this.primaryEntity.Entity;
+    props.refreshAfterClose = this.refreshAfterClose.bind(this);
 
     for (let i = 0; i < ec.length; i++) {
       let file: IFileItem = {
