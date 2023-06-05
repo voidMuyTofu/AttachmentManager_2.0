@@ -34,7 +34,7 @@ export class ItemList {
     });
     this.columns.push({
       key: "fileName",
-      name: "Name",
+      name: "Nombre",
       fieldName: "fileName",
       minWidth: 100,
       maxWidth: 200,
@@ -42,7 +42,7 @@ export class ItemList {
     });
     this.columns.push({
       key: "fileType",
-      name: "Type",
+      name: "Tipo",
       fieldName: "fileType",
       minWidth: 50,
       maxWidth: 50,
@@ -50,7 +50,7 @@ export class ItemList {
     });
     this.columns.push({
       key: "lastModifiedOn",
-      name: "Last Modified On",
+      name: "Modificado",
       fieldName: "lastModifiedOn",
       minWidth: 100,
       maxWidth: 200,
@@ -58,7 +58,7 @@ export class ItemList {
     });
     this.columns.push({
       key: "lastModifiedBy",
-      name: "Last Modified By",
+      name: "Modificado por",
       fieldName: "lastModifiedBy",
       minWidth: 100,
       maxWidth: 200,

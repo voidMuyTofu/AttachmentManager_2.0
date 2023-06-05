@@ -27,7 +27,8 @@
     {
       "files": ["*.tsx"],
       "rules": {
-        "no-case-declarations": "off"
+        "no-case-declarations": "off",
+        "no-debugger": "off"
       }
     }
   ]

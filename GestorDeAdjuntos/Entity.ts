@@ -16,7 +16,6 @@ export const ActivityMimeAttachment = {
     ] = `activitypointers(${regarding.id})`;
     attachment["objecttypecode"] = regarding.typeName;
     attachment["filename"] = name;
-
     await context.webAPI.createRecord(
       ActivityMimeAttachment.EntityName,
       attachment
@@ -57,9 +56,6 @@ export const SharePointDocument = {
 				<attribute name="iconclassname"/>
 				<attribute name="locationname"/>
 				<order attribute="relativelocation" descending="false"/>
-				<filter>
-					<condition attribute="isrecursivefetch" operator="eq" value="0"/>
-				</filter>
 				<link-entity name="{entityName}" from="{entityName}id" to="regardingobjectid" alias="bb">
 					<filter type="and">
 						<condition attribute="{entityName}id" operator="eq" uitype="{entityName}id" value="{id}"/>
@@ -84,6 +80,7 @@ export const SharePointDocument = {
       .split("{id}")
       .join(id);
 
+    debugger;
     const documents = await context.webAPI.retrieveMultipleRecords(
       SharePointDocument.EntityName,
       FetchXML.prepareOptions(fetchXml)

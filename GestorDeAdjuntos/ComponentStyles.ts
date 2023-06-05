@@ -21,4 +21,18 @@ export const classNames = mergeStyleSets({
   row: {
     display: "inline-block",
   },
+  buttonExaminar:{
+    backgroundColor: "#E57E10",
+    borderColor: "#E57E10",
+    selectors: {
+      ':hover': {
+        backgroundColor: '#BF690D',
+        borderColor: "#E57E10"
+      },
+      ':active': {
+        backgroundColor: '#BF690D',
+        borderColor: "#E57E10"
+      }
+    }
+  },
 });
