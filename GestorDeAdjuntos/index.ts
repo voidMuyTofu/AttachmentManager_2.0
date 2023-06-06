@@ -41,7 +41,7 @@ export class GestorDeAdjuntos
         ActivityMimeAttachment.create(
           data["Content"],
           this.primaryEntity.Entity,
-          fileUrl.substr(fileUrl.lastIndexOf("/")),
+          selectedFiles[i].fileName,
           this.context
         );
       }

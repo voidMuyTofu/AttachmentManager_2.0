@@ -52,7 +52,7 @@ export class SharePointHelper {
     for (let i = 0; i < this.spList.length; i++) {
       if (url.indexOf(this.spList[i]) > -1) {
         spSiteUrl = encodeURIComponent(this.spList[i]);
-        spFilePath = encodeURIComponent(url.replace(this.spList[i], ""));
+        spFilePath = url.replace(this.spList[i], "");
         break;
       }
     }
